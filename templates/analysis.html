@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analysis - Air Quality Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Include Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">EcoPredict AI</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/analysis" class="active">Data Analysis</a></li>
+            <li><a href="/prediction">Predict AQI</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2 class="page-title">Exploratory Data Analysis</h2>
+        <p class="page-subtitle">Visualizing trends and correlations in the air quality dataset.</p>
+
+        <div class="chart-grid">
+            <div class="chart-card">
+                <h3>PM2.5 vs PM10 Levels</h3>
+                <canvas id="pmChart"></canvas>
+            </div>
+            
+            <div class="chart-card">
+                <h3>AQI Trend over Samples</h3>
+                <canvas id="aqiChart"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h3>Other Pollutants (NO2, CO, SO2)</h3>
+                <canvas id="pollutantsChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 EcoPredict AI Project</p>
+    </footer>
+
+    <!-- Custom JS to load and render charts -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

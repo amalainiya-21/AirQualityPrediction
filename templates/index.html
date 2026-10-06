@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality Analysis & Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">EcoPredict AI</div>
+        <ul class="nav-links">
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="/analysis">Data Analysis</a></li>
+            <li><a href="/prediction">Predict AQI</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Air Quality Prediction using Machine Learning</h1>
+            <p>Analyze environmental data and predict the Air Quality Index (AQI) with the power of Random Forest Regression.</p>
+            <div class="hero-buttons">
+                <a href="/analysis" class="btn btn-secondary">View Analysis</a>
+                <a href="/prediction" class="btn btn-primary">Predict Now</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="feature-card">
+            <h3>Machine Learning Model</h3>
+            <p>Powered by Scikit-Learn using a highly accurate Random Forest Regressor to predict Air Quality.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Interactive Analysis</h3>
+            <p>Visualize trends in pollutants like PM2.5, PM10, NO2, and CO with beautiful dynamic charts.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Beginner Friendly</h3>
+            <p>Designed for college-level projects with simple code structure, clean UI, and well-explained steps.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 EcoPredict AI Project</p>
+    </footer>
+</body>
+</html>

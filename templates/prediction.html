@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict AQI - Air Quality Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">EcoPredict AI</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/analysis">Data Analysis</a></li>
+            <li><a href="/prediction" class="active">Predict AQI</a></li>
+        </ul>
+    </nav>
+
+    <div class="container prediction-container">
+        <div class="form-section">
+            <h2>Enter Environmental Data</h2>
+            <p>Input the pollutant values to predict the Air Quality Index.</p>
+            
+            {% if error %}
+            <div class="alert error">{{ error }}</div>
+            {% endif %}
+
+            <form action="/prediction" method="POST" class="prediction-form">
+                <div class="input-group">
+                    <label for="pm25">PM2.5 (&mu;g/m³)</label>
+                    <input type="number" step="0.01" id="pm25" name="pm25" required placeholder="e.g. 45.2">
+                </div>
+
+                <div class="input-group">
+                    <label for="pm10">PM10 (&mu;g/m³)</label>
+                    <input type="number" step="0.01" id="pm10" name="pm10" required placeholder="e.g. 100.5">
+                </div>
+
+                <div class="input-group">
+                    <label for="no2">NO2 (ppb)</label>
+                    <input type="number" step="0.01" id="no2" name="no2" required placeholder="e.g. 30.1">
+                </div>
+
+                <div class="input-group">
+                    <label for="co">CO (ppm)</label>
+                    <input type="number" step="0.01" id="co" name="co" required placeholder="e.g. 1.5">
+                </div>
+
+                <div class="input-group">
+                    <label for="so2">SO2 (ppb)</label>
+                    <input type="number" step="0.01" id="so2" name="so2" required placeholder="e.g. 12.0">
+                </div>
+
+                <div class="input-group">
+                    <label for="o3">O3 (ppb)</label>
+                    <input type="number" step="0.01" id="o3" name="o3" required placeholder="e.g. 40.0">
+                </div>
+
+                <button type="submit" class="btn btn-primary submit-btn">Predict AQI</button>
+            </form>
+        </div>
+
+        <div class="result-section">
+            {% if prediction_result %}
+                <div class="result-card category-{{ prediction_result.category|lower|replace(' ', '-') }}">
+                    <h3>Predicted AQI</h3>
+                    <div class="aqi-value">{{ prediction_result.aqi }}</div>
+                    <div class="aqi-category">{{ prediction_result.category }}</div>
+                    <p class="aqi-desc">Based on the provided parameters, the air quality is considered <strong>{{ prediction_result.category }}</strong>.</p>
+                </div>
+            {% else %}
+                <div class="result-card empty-result">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3211/3211327.png" alt="Nature Icon" style="width:100px; opacity:0.5; margin-bottom: 20px;">
+                    <h3>Result Will Appear Here</h3>
+                    <p>Fill out the form and click predict to see the estimated Air Quality Index.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 EcoPredict AI Project</p>
+    </footer>
+</body>
+</html>
